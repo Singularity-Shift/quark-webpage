@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         telegramBot: 'https://t.me/QuarkAptosBot',   // Direct link to start using the Quark AI bot
         telegramGroup: 'https://t.me/LedgerEmoji', // Link to join the Telegram community/group
         discord: 'https://discord.gg/Gmsrdf3dyR',       // Discord server link
-        gitbook: 'https://sshiftgpt.gitbook.io/quark-ai/',       // GitBook documentation link
+        gitbook: 'https://sshiftgpt.gitbook.io/sshift-quark',       // GitBook documentation link
         website1: 'https://ledgerapp.fun/',      // First additional webpage
         website2: 'https://sshiftgpt.com/'       // Second additional webpage
     };
