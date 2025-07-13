@@ -71,12 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set up navigation links
     function setupNavigationLinks() {
-        // Telegram Bot links (main CTA buttons)
+        // Telegram Bot links (main CTA buttons) - Show coming soon popup
         const telegramBotLinks = document.querySelectorAll('#get-started-btn, #main-cta-btn');
         telegramBotLinks.forEach(link => {
-            link.href = links.telegramBot;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
+            link.href = '#'; // Prevent navigation
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showComingSoonMessage();
+            });
         });
 
         // Telegram Group links (navigation)
@@ -146,6 +148,43 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: transform 0.3s ease;
         `;
         notification.textContent = `${linkName} link will be configured by the website owner.`;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+
+    // Show "Coming to mainnet soon" message
+    function showComingSoonMessage() {
+        // Create a temporary notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            z-index: 10000;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        `;
+        notification.textContent = 'Coming to mainnet soon! 🚀';
         
         document.body.appendChild(notification);
         
