@@ -64,21 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
         telegramBot: 'https://t.me/QuarkAptosBot',   // Direct link to start using the Quark AI bot
         telegramGroup: 'https://t.me/LedgerEmoji', // Link to join the Telegram community/group
         discord: 'https://discord.gg/Gmsrdf3dyR',       // Discord server link
-        gitbook: 'https://your-docs.gitbook.io/',       // GitBook documentation link (placeholder)
+        gitbook: 'https://sshiftgpt.gitbook.io/quark-ai/',       // GitBook documentation link
         website1: 'https://ledgerapp.fun/',      // First additional webpage
         website2: 'https://sshiftgpt.com/'       // Second additional webpage
     };
 
     // Set up navigation links
     function setupNavigationLinks() {
-        // Telegram Bot links (main CTA buttons) - Show coming soon popup
+        // Telegram Bot links (main CTA buttons) - Link to actual bot
         const telegramBotLinks = document.querySelectorAll('#get-started-btn, #main-cta-btn');
         telegramBotLinks.forEach(link => {
-            link.href = '#'; // Prevent navigation
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                showComingSoonMessage();
-            });
+            link.href = links.telegramBot;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
         });
 
         // Telegram Group links (navigation)
@@ -101,15 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const gitbookLinks = document.querySelectorAll('#gitbook-link, #footer-gitbook');
         gitbookLinks.forEach(link => {
             link.href = links.gitbook;
-            if (links.gitbook !== 'https://your-docs.gitbook.io/') {
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-            } else {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showLinkNotSetMessage('GitBook');
-                });
-            }
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
         });
 
         // Additional website links
@@ -165,42 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    // Show "Coming to mainnet soon" message
-    function showComingSoonMessage() {
-        // Create a temporary notification
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            z-index: 10000;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        `;
-        notification.textContent = 'Coming to mainnet soon! 🚀';
-        
-        document.body.appendChild(notification);
-        
-        // Animate in
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Remove after 3 seconds
-        setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
-    }
+
 
     // Initialize navigation
     setupNavigationLinks();
