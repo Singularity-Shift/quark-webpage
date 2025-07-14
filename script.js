@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navigation URLs
     const links = {
-        telegramBot: 'https://t.me/QuarkAptosBot',   // Direct link to start using the Quark AI bot
+        telegramBot: 'https://t.me/QuarkLedgerBot',   // Direct link to start using the Quark AI bot
         telegramGroup: 'https://t.me/LedgerEmoji', // Link to join the Telegram community/group
         discord: 'https://discord.gg/Gmsrdf3dyR',       // Discord server link
         gitbook: 'https://sshiftgpt.gitbook.io/sshift-quark',       // GitBook documentation link
